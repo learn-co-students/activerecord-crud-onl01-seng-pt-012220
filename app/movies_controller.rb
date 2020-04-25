@@ -1,4 +1,4 @@
-
+require 'pry'
 
   def can_be_instantiated_and_then_saved
     movie = Movie.new
@@ -18,18 +18,20 @@
     movie = Movie.create(attributes)
   end
 
-  def can_be_created_in_a_block(args = nil)
+  def can_be_created_in_a_block(args)
     Movie.create do |m|
-      m.title = args
+      m.title = args[0]
+
+      #binding.pry
     end
   end
 
   def can_get_the_first_item_in_the_database
-    Movie.first.title
+    Movie.first
   end
 
   def can_get_the_last_item_in_the_database
-    Movie.last.title
+    Movie.last
   end
 
   def can_get_size_of_the_database
@@ -37,7 +39,7 @@
   end
 
   def can_find_the_first_item_from_the_database_using_id
-    Movie.find(1).title
+    Movie.find(1)
   end
 
   def can_find_by_multiple_attributes
